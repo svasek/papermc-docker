@@ -11,6 +11,7 @@ COPY papermc.sh .
 RUN apk -U upgrade && \
     apk -U add --no-cache tzdata curl wget jq && \
     rm -rf /tmp/* && rm -rf /var/cache/apk/* && \
+    ln -sf /opt/java/openjdk /usr/local/openjdk-17 && \
     adduser -D -h /papermc papermc
 
 USER papermc
