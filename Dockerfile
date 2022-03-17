@@ -1,5 +1,5 @@
 # JRE base
-FROM openjdk:16-slim
+FROM openjdk:17-slim
 
 # Environment variables
 ENV MC_VERSION="latest" \
@@ -9,8 +9,7 @@ ENV MC_VERSION="latest" \
 
 COPY papermc.sh .
 RUN apt-get update \
-    && apt-get install -y wget \
-    && apt-get install -y jq \
+    && apt-get install -y curl wget jq \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /papermc
 
