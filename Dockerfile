@@ -11,10 +11,12 @@ COPY papermc.sh .
 RUN apt-get update \
     && apt-get install -y curl wget jq \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir /papermc
+    && adduser --disabled-password --home /papermc papermc
+
+USER papermc
 
 # Start script
-CMD ["sh", "./papermc.sh"]
+CMD ["sh", "/papermc.sh"]
 
 # Container setup
 EXPOSE 25565/tcp

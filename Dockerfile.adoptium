@@ -11,11 +11,12 @@ COPY papermc.sh .
 RUN apk -U upgrade && \
     apk -U add --no-cache tzdata curl wget jq && \
     rm -rf /tmp/* && rm -rf /var/cache/apk/* && \
-    mkdir /papermc
+    adduser -D -h /papermc papermc
 
+USER papermc
 
 # Start script
-CMD ["sh", "./papermc.sh"]
+CMD ["sh", "/papermc.sh"]
 
 # Container setup
 EXPOSE 25565/tcp
